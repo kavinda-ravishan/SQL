@@ -41,4 +41,48 @@ SELECT * FROM bands ORDER BY name ASC;
 
 SELECT * FROM bands ORDER BY name DESC; # get name column data descending order (reverse alphabetical order)
 
+# Insert data to albums table
+INSERT INTO albums (name, release_year, band_id) # Columns data going to enter
+VALUES 	("The number of the beasts", 1985, 1),
+		("Power slave", 1984, 1),
+        ("Nightmare", 2018, 2),
+        ("Nightmare", 2010, 3),
+        ("Test Album", NULL, 3); # NULL for empty field
+        
+SELECT * FROM albums; # get all columns and rows from albums table
 
+SELECT name FROM albums; # get only name column
+
+SELECT DISTINCT name FROM albums; # # get unique names only
+
+UPDATE albums 			 # update albums table,
+SET release_year = 1982  # release_year column,
+WHERE id = 1;			 # where id = 1 row to 1982
+
+# get all the albums release before year 2000
+SELECT * FROM albums
+WHERE release_year < 2000;
+
+SELECT * FROM albums    # return all columns,
+WHERE name LIKE "%er%"; # rows where with 'er' (anything befor er and anything after er) in name column.
+
+# And
+SELECT * FROM albums
+WHERE release_year LIKE 1984 AND band_id = 1;
+
+# Or
+SELECT * FROM albums
+WHERE name LIKE "%er%" OR band_id = 2;
+
+# Between
+SELECT * FROM albums
+WHERE release_year BETWEEN 2000 AND 2018;
+
+# Is null
+SELECT * FROM albums
+WHERE release_year IS NULL;
+
+# Delete the id = 5 row
+DELETE FROM albums WHERE id = 5;
+
+SELECT * FROM albums;
