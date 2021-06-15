@@ -86,3 +86,30 @@ WHERE release_year IS NULL;
 DELETE FROM albums WHERE id = 5;
 
 SELECT * FROM albums;
+
+# Join
+
+# Inner join
+SELECT * FROM bands                           # Join bands with albums
+JOIN albums ON bands.id = albums.band_id;
+# or
+SELECT * FROM bands                           # Join bands with albums
+INNER JOIN albums ON bands.id = albums.band_id;
+
+SELECT * FROM albums                          # Join albums with bands
+JOIN bands ON bands.id = albums.band_id;
+
+# left join
+SELECT * FROM bands                            # Returns all bands even there is no album to mach
+LEFT JOIN albums ON bands.id = albums.band_id; # Bands table in left side
+
+# right join
+SELECT * FROM albums                            # Returns all bands even there is no album to mach
+RIGHT JOIN bands ON bands.id = albums.band_id;  # Bands table in right side
+
+# aggregate functions
+SELECT AVG(release_year) FROM albums;
+
+SELECT SUM(release_year) FROM albums;
+
+
