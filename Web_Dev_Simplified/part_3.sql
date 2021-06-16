@@ -112,4 +112,35 @@ SELECT AVG(release_year) FROM albums;
 
 SELECT SUM(release_year) FROM albums;
 
+# Group by
 
+SELECT band_id, COUNT(band_id) FROM albums
+GROUP BY band_id;
+
+SELECT bands.name, COUNT(albums.id) FROM bands
+LEFT JOIN albums ON bands.id = albums.band_id
+GROUP BY bands.id;
+# or with aliasing
+SELECT b.name as bans_name, COUNT(a.id) as num_albums
+FROM bands as b
+LEFT JOIN albums AS a ON b.id = a.band_id
+GROUP BY b.id;
+
+# having vs where
+
+SELECT b.name as bans_name, COUNT(a.id) as num_albums
+FROM bands as b
+LEFT JOIN albums AS a ON b.id = a.band_id
+GROUP BY b.id
+HAVING num_albums = 1; # return rows only with num_albums = 1
+# or
+SELECT bands.name, COUNT(albums.id) as num_albums FROM bands
+LEFT JOIN albums ON bands.id = albums.band_id
+GROUP BY bands.id
+HAVING num_albums = 1;
+
+SELECT bands.name, COUNT(albums.id) as num_albums FROM bands
+LEFT JOIN albums ON bands.id = albums.band_id
+WHERE bands.name = "deuce"
+GROUP BY bands.id
+HAVING num_albums = 1;
