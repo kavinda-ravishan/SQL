@@ -1,7 +1,7 @@
 USE sql_store;
 -- this mathod ignore the attributes like primary key and auto_increment
 CREATE TABLE orders_archive AS
-SELECT * FROM orders; -- soft quary
+SELECT * FROM orders; -- sub quary
 
 SELECT * FROM orders_archive;
 
